@@ -1,6 +1,6 @@
 from Utils import read_data
 
-def get_top_N_elven_supplies_sum(n):
+def get_top_n_elven_supplies_sum(n):
     data = read_data(1)
     summed_array = [0]
     for value in data:
@@ -10,7 +10,7 @@ def get_top_N_elven_supplies_sum(n):
             summed_array[-1] += value
     summed_array.sort()
     return sum(summed_array[-n:])
-    
 
-print(get_top_N_elven_supplies_sum(1))
-print(get_top_N_elven_supplies_sum(3))
+
+print(get_top_n_elven_supplies_sum(1))
+print(get_top_n_elven_supplies_sum(3))
