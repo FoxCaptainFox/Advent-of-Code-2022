@@ -1,7 +1,7 @@
 from Utils import read_data
 
 def get_top_n_elven_supplies_sum(n):
-    data = read_data()
+    data = read_data(1)
     summed_array = [0]
     for value in data:
         if value is None:

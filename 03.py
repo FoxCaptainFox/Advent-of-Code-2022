@@ -14,7 +14,7 @@ def get_common_item_priority_sum(groups):
     return sum(common_item_priorities)
 
 
-backpacks = read_data(as_int=False)
+backpacks = read_data(3, as_int=False)
 
 backpacks_sections = [
     [backpack[: len(backpack) // 2], backpack[len(backpack) // 2 :]]
