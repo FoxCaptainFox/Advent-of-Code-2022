@@ -1,4 +1,4 @@
-from Utils import read_data
+from utils import read_data
 
 def calculate_points_1(description):
     shape_2 = description.split(" ")[1]
@@ -46,6 +46,6 @@ def calculate_points_2(description):
     return result
 
 
-data = read_data(2, as_int=False)
+data = read_data(2)
 print(sum([calculate_points_1(x) for x in data]))
 print(sum([calculate_points_2(x) for x in data]))

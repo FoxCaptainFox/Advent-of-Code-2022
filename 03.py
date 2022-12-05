@@ -1,4 +1,4 @@
-from Utils import read_data
+from utils import read_data
 import numpy as np
 
 
@@ -14,7 +14,7 @@ def get_common_item_priority_sum(groups):
     return sum(common_item_priorities)
 
 
-backpacks = read_data(3, as_int=False)
+backpacks = read_data(3)
 
 backpacks_sections = [
     [backpack[: len(backpack) // 2], backpack[len(backpack) // 2 :]]

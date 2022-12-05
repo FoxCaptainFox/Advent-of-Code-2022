@@ -1,9 +1,9 @@
 from itertools import zip_longest
 import re
 import copy
-from Utils import read_data_new
+from utils import read_data
 
-data = read_data_new(5)
+data = read_data(5)
 data_separator_index = data.index('')
 
 crates_data = [list(x) for x in data[:data_separator_index - 1]]
