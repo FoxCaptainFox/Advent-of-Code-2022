@@ -2,13 +2,12 @@ import os
 import re
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-DIRECTORY_NAME = "Data"
 
 
-def read_data(file_number, as_int=True, base=10, by_separate_characacters=False):
+def read_data(as_int=True, base=10, by_separate_characacters=False):
     result = []
     file_name = os.path.join(
-        __location__, f"{DIRECTORY_NAME}/{format(file_number, '02d')}.txt"
+        __location__, f"data.txt"
     )
 
     with open(file_name) as file:

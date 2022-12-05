@@ -46,6 +46,6 @@ def calculate_points_2(description):
     return result
 
 
-data = read_data(2, as_int=False)
+data = read_data(as_int=False)
 print(sum([calculate_points_1(x) for x in data]))
 print(sum([calculate_points_2(x) for x in data]))
