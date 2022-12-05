@@ -16,7 +16,7 @@ crates_stacks_2 = copy.deepcopy(crates_stacks_1)
 
 for instruction_line in data[data_separator_index + 1:]:
     instruction = [int(number) for number
-        in re.split("move | from | to ", instruction_line) if number != '']
+                   in re.split("move | from | to ", instruction_line) if number != '']
 
     for _ in range(instruction[0]):
         crate = crates_stacks_1[instruction[1] - 1].pop()
