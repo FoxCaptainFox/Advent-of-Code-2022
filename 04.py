@@ -1,7 +1,7 @@
 import re
-from Utils import read_data
+from utils import read_data
 
-data = read_data(4, as_int=False)
+data = read_data(4)
 complete_overlaps = partial_overlaps = 0
 for record in data:
     start_1, end_1, start_2, end_2 = [int(number) for number in re.split(",|-", record)]
