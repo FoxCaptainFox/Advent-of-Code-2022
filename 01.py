@@ -1,7 +1,6 @@
 from utils import read_data
 
-def get_top_n_elven_supplies_sum(n):
-    data = read_data(1, output_type=int)
+def get_top_n_elven_supplies_sum(data, n):
     summed_array = [0]
     for value in data:
         if value is None:
@@ -12,5 +11,6 @@ def get_top_n_elven_supplies_sum(n):
     return sum(summed_array[-n:])
 
 
-print(get_top_n_elven_supplies_sum(1))
-print(get_top_n_elven_supplies_sum(3))
+data = read_data(1, output_type=int)
+print(get_top_n_elven_supplies_sum(data, 1))
+print(get_top_n_elven_supplies_sum(data, 3))
