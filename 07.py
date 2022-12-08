@@ -34,8 +34,6 @@ for line in data:
     if new_current_directory_name := re.search(r'\$ cd ([a-z]+)', line):
         current_node = next((x for x in current_node.children 
                              if x.name == new_current_directory_name.group(1)), None)
-        if not current_node:
-            print(line)
         continue
     if new_child_directory_name := re.search(r'dir ([a-z]+)', line):
         new_child_directory = FileSystemNode(new_child_directory_name.group(1))
