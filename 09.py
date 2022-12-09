@@ -1,6 +1,6 @@
 from utils import read_data
 
-DIRECTION = {
+DIRECTIONS = {
     "U": [0, 1],
     "D": [0, -1],
     "L": [-1, 0],
@@ -13,7 +13,7 @@ def get_route_length(commands, knot_number):
     tail_route = {tuple(rope_knot_coordinates[-1])}
 
     for command in commands:
-        command_direction = DIRECTION[command.split(" ")[0]]
+        command_direction = DIRECTIONS[command.split(" ")[0]]
         command_length = int(command.split(" ")[1])
 
         for _ in range(command_length):
