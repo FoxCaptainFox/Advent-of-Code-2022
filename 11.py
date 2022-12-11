@@ -16,7 +16,7 @@ class Monkey(object):
         self.test_divisor = test_divisor
         self.positive_test_target_id = positive_test_target_id
         self.negative_test_target_id = negative_test_target_id
-        self.inspection_number = 0
+        self.inspection_count = 0
 
     def add_item(self, item):
         self.items.append(item)
@@ -47,7 +47,7 @@ class Monkey(object):
                          else self.negative_test_target_id)
 
             result.append([target_id, item])
-            self.inspection_number += 1
+            self.inspection_count += 1
 
         self.items = []
         return result
@@ -78,28 +78,28 @@ def get_monkeys(monkey_data):
     return monkeys
 
 
-def get_monkey_business_level(these_monkeys, round_number,
+def get_monkey_business_level(these_monkeys, round_count,
                               decrease_worry=True,
                               calculate_precise_worry=True):
     common_test_divisor = reduce(
         lambda x, y: x*y, [m.test_divisor for m in these_monkeys]
     )
 
-    for _ in range(round_number):
+    for _ in range(round_count):
         for monkey in these_monkeys:
             thrown_items = monkey.inspect_items(decrease_worry)
-            for thrown_item in thrown_items:
-                target_monkey = next((m for m in these_monkeys if m.id == thrown_item[0]), None)
+            for target_monkey_id, item_worry_level in thrown_items:
+                target_monkey = next((m for m in these_monkeys if m.id == target_monkey_id), None)
                 if target_monkey is None:
-                    raise ValueError(f"No target monkey found with id = {thrown_item[0]}")
+                    raise ValueError(f"No target monkey found with id = {target_monkey_id}")
 
-                thrown_item_value = (thrown_item[1] \
-                                     if calculate_precise_worry \
-                                     else thrown_item[1] % common_test_divisor)
+                thrown_item_value = (item_worry_level
+                                     if calculate_precise_worry
+                                     else item_worry_level % common_test_divisor)
                 target_monkey.add_item(thrown_item_value)
 
-    sorted_inspection_numbers = sorted([monkey.inspection_number for monkey in these_monkeys])
-    return sorted_inspection_numbers[-1] * sorted_inspection_numbers[-2]
+    sorted_inspection_counts = sorted([monkey.inspection_count for monkey in these_monkeys])
+    return sorted_inspection_counts[-1] * sorted_inspection_counts[-2]
 
 
 data = read_file(11)
