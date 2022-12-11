@@ -24,12 +24,12 @@ class Monkey(object):
     def inspect_items(self, decrease_worry):
         result = []
         for item in self.items:
-            left_part = item \
-                        if self.operation_left_part == "old" \
-                        else int(self.operation_left_part)
-            right_part = item \
-                         if self.operation_right_part == "old" \
-                         else int(self.operation_right_part)
+            left_part = (item
+                         if self.operation_left_part == "old"
+                         else int(self.operation_left_part))
+            right_part = (item
+                          if self.operation_right_part == "old"
+                          else int(self.operation_right_part))
 
             if self.operation_operator == "*":
                 item = left_part * right_part
@@ -42,9 +42,9 @@ class Monkey(object):
             if decrease_worry:
                 item = math.floor(item / 3)
 
-            target_id = self.positive_test_target_id \
-                        if item % self.test_divisor == 0 \
-                        else self.negative_test_target_id
+            target_id = (self.positive_test_target_id
+                         if item % self.test_divisor == 0
+                         else self.negative_test_target_id)
 
             result.append([target_id, item])
             self.inspection_number += 1
@@ -93,9 +93,9 @@ def get_monkey_business_level(these_monkeys, round_number,
                 if target_monkey is None:
                     raise ValueError(f"No target monkey found with id = {thrown_item[0]}")
 
-                thrown_item_value = thrown_item[1] \
-                                    if calculate_precise_worry \
-                                    else thrown_item[1] % common_test_divisor
+                thrown_item_value = (thrown_item[1] \
+                                     if calculate_precise_worry \
+                                     else thrown_item[1] % common_test_divisor)
                 target_monkey.add_item(thrown_item_value)
 
     sorted_inspection_numbers = sorted([monkey.inspection_number for monkey in these_monkeys])
@@ -105,4 +105,5 @@ def get_monkey_business_level(these_monkeys, round_number,
 data = read_file(11)
 print(get_monkey_business_level(get_monkeys(data), 20))
 print(get_monkey_business_level(get_monkeys(data), 10000,
-      decrease_worry=False, calculate_precise_worry=False))
+                                decrease_worry=False,
+                                calculate_precise_worry=False))
